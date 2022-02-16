@@ -25,10 +25,10 @@ namespace RecepcjaHotelu.Models
 
         [DisplayName("Cena za dobe")]
         [Required(ErrorMessage = "Pole Cena za dobe jest wymagane.")]
-        [MaxLength(4000)]
         public decimal Price { get; set; }
 
         [DisplayName("Opis")]
+        [MaxLength(4000)]
         public string Description { get; set; }
     }
 }

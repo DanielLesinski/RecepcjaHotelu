@@ -30,6 +30,7 @@ namespace RecepcjaHotelu
             services.AddDbContext<DataContext>(o =>
                 o.UseSqlServer(Configuration.GetConnectionString("RecepcjaDB")));
             services.AddTransient<DataRoomsType>();
+            services.AddTransient<DataClients>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

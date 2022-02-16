@@ -148,3 +148,8 @@ C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor
 C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\RoomsType\Details.cshtml.g.cs
 C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\RoomsType\Edit.cshtml.g.cs
 C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\RoomsType\Delete.cshtml.g.cs
+C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\Clients\Index.cshtml.g.cs
+C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\Clients\Details.cshtml.g.cs
+C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\Clients\Create.cshtml.g.cs
+C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\Clients\Edit.cshtml.g.cs
+C:\Users\danie\source\repos\RecepcjaHotelu\RecepcjaHotelu\obj\Debug\net5.0\Razor\Views\Clients\Delete.cshtml.g.cs
