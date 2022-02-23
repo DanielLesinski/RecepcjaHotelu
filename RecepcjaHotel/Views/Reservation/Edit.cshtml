@@ -1,0 +1,109 @@
+﻿@model RecepcjaHotel.Models.Reservation
+@using Microsoft.EntityFrameworkCore;
+
+@{
+    ViewData["Title"] = "Edit";
+    RecepcjaDBContext db = new RecepcjaDBContext();
+    IEnumerable<Payment> payList = db.Payments;
+    IEnumerable<Room> roomList;
+    IEnumerable<Client> clientsList = db.Clients;
+    IEnumerable<RoomsType> roomsTypes = db.RoomsTypes.Include(o => o.Rooms);
+    IEnumerable<Reservation> reservatonList = db.Reservations.Include(o => o.Rooms).Where(o => o.Id != Model.Id);
+}
+
+<h1 class="display-4">Edytuj Rezerwacje</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="DateCheckIn" class="control-label"></label>
+                <input type="date" asp-format="{0:yyyy-MM-dd}" asp-for="DateCheckIn" class="form-control" />
+                <span asp-validation-for="DateCheckIn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DateCheckOut" class="control-label"></label>
+                <input type="date" asp-format="{0:yyyy-MM-dd}" asp-for="DateCheckOut" class="form-control" />
+                <span asp-validation-for="DateCheckOut" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Clients.Id" class="control-label"></label>
+                <select asp-for="ClientsId" class="form-control" asp-items="ViewBag.ClientsId">
+                    @foreach (Client item in clientsList)
+                    {
+                        <option value=@item.Id>@item.Name @item.Surname @item.PhoneNumber</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rooms.Id" class="control-label"></label>
+                <select asp-for="RoomsId" class="form-control" asp-items="ViewBag.RoomsId">
+                    @foreach (RoomsType item in roomsTypes)
+                    {
+                        <optgroup label="@item.Name, Rozmiar: @item.Size m2, Cena za dobe: @item.Price zł">
+                            @{ roomList = item.Rooms;}
+                            @foreach (Room room in roomList)
+                            {
+                                <option value=@room.Id>@room.Id</option>
+                            }
+                        </optgroup>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Payments.Name" class="control-label"></label>
+                <select asp-for="PaymentsId" class="form-control" asp-items="ViewBag.PaymentsId">
+                    @foreach (Payment item in payList)
+                    {
+                        <option value=@item.Id>@item.Name</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Zapisz" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+    <div style="float:right; margin-left:10%">
+        <h3>Rezerwacje</h3>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        Data Zameldowania
+                    </th>
+                    <th>
+                        Data Wymeldowania
+                    </th>
+                    <th>
+                        Numer Pokoju
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in reservatonList)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCheckIn)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.DateCheckOut)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Rooms.Id)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div>
+    <a class="btn btn-dark" asp-action="Index">Powrót do Listy</a>
+</div>
+

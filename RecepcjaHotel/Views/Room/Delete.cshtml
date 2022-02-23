@@ -1,0 +1,32 @@
+﻿@model RecepcjaHotel.Models.Room
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="display-4">Usuń Pokój</h1>
+
+<h3>Czy na peno chcesz usunąć Pokój?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.RoomsType.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.RoomsType.Name)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Usuń" class="btn btn-danger" />
+        <a class="btn btn-dark" asp-action="Index">Powrót do Listy</a>
+    </form>
+</div>

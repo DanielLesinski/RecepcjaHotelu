@@ -1,0 +1,60 @@
+﻿@model RecepcjaHotel.Models.Forbidden
+
+@{
+    ViewData["Title"] = "Details";
+    string[] listInfo = new string[]
+    {
+        new string("Nie można usuwać lub edytować rodzaju pokoju, gdy jest on używany przez pokoje."),
+        new string("Nie można usunąć lub edytować pokoju, gdy jest on związany z jakąś rezerwacją."),
+        new string("Nie można usunąć lub edytować klienta, gdy jest on związany z jakąś rezerwacją."),
+        new string("Nie można zarezerwować pokoju. Pokój jest zarezerwowany lub wprowadzono złe daty.")
+    };
+}
+
+<h1 class="text-danger">Zabroniona akcja</h1>
+<br />
+<div>
+    @{
+        switch (Model.id)
+        {
+            case 0:
+                <text>
+                    <h2>@listInfo[0]</h2>
+                    <div>
+                        <a class="btn btn-dark" asp-controller="RoomsType" asp-action="Index">Powrót do Listy</a>
+                    </div>
+                </text>
+                break;
+            case 1:
+                <text>
+                    <h2>@listInfo[1]</h2>
+                    <div>
+                        <a class="btn btn-dark" asp-controller="Room" asp-action="Index">Powrót do Listy</a>
+                    </div>
+                </text>
+                break;
+            case 2:
+                <text>
+                    <h2>@listInfo[2]</h2>
+                    <div>
+                        <a class="btn btn-dark" asp-controller="Client" asp-action="Index">Powrót do Listy</a>
+                    </div>
+                </text>
+                break;
+            case 3:
+                <text>
+                    <h2>@listInfo[3]</h2>
+                    <div>
+                        <a class="btn btn-dark" asp-controller="Reservation" asp-action="Index">Powrót do Listy</a>
+                    </div>
+                </text>
+                break;
+            default:
+                <text>
+                    <h2>Default</h2>
+                </text>
+                break;
+        }
+    }
+</div>
+
